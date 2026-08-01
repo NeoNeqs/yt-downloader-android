@@ -217,7 +217,6 @@ export PKG_CONFIG_PATH
     --disable-debug \
     --disable-ffplay \
     --disable-ffprobe \
-    --disable-postproc \
     --disable-network \
     --disable-everything \
     --enable-ffmpeg \
