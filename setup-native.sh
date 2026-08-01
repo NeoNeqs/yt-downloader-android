@@ -250,8 +250,6 @@ make -j"$(nproc)"
 
 FFMPEG="$WORK_DIR/ffmpeg/ffmpeg"
 
-"$FFMPEG" -hide_banner -encoders | grep -i mp3
-
 [[ -f "$FFMPEG" ]] || die "FFmpeg binary was not produced."
 
 echo
