@@ -145,30 +145,23 @@ if [[ -f Makefile ]]; then
     make distclean >/dev/null 2>&1 || true
 fi
 
+LAME_PREFIX="$WORK_DIR/lame/install"
+
 ./configure \
     --host=aarch64-linux-android \
-    --build="$(gcc -dumpmachine)" \
+    --prefix="$LAME_PREFIX" \
     --enable-static \
     --disable-shared \
-    --disable-decoder \
     --disable-frontend \
     CC="$CC" \
-    AR="$TOOLCHAIN/bin/llvm-ar" \
-    RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
-    STRIP="$TOOLCHAIN/bin/llvm-strip"
+    AR="$AR" \
+    RANLIB="$RANLIB"
 
 make -j"$(nproc)"
+make install
 
-LAME_PREFIX="$WORK_DIR/lame/install/usr/local"
-
-rm -rf "$LAME_PREFIX"
-mkdir -p "$LAME_PREFIX"
-
-make install \
-    DESTDIR="$LAME_PREFIX"
-
-LAME_INCLUDE="$LAME_PREFIX/usr/local/include"
-LAME_LIB="$LAME_PREFIX/usr/local/lib"
+LAME_INCLUDE="$LAME_PREFIX/include"
+LAME_LIB="$LAME_PREFIX/lib"
 
 [[ -f "$LAME_LIB/libmp3lame.a" ]] \
     || die "libmp3lame.a was not produced."
