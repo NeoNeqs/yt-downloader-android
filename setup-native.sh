@@ -147,7 +147,6 @@ fi
 
 LAME_PREFIX="$WORK_DIR/lame/install"
 
-make distclean
 ./configure \
     --host=aarch64-linux-android \
     --prefix="$LAME_PREFIX" \
