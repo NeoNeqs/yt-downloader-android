@@ -28,7 +28,7 @@ CC="$TOOLCHAIN/bin/aarch64-linux-android${API}-clang"
 CXX="$TOOLCHAIN/bin/aarch64-linux-android${API}-clang++"
 
 TERMUX_REPO="https://packages.termux.dev/apt/termux-main"
-TERMUX_DIST="stable"
+TERMUX_DIST=""
 TERMUX_ARCH="aarch64"
 
 NODE_PACKAGE="nodejs-lts"
@@ -238,9 +238,9 @@ PACKAGES_XZ="$WORK_DIR/Packages.xz"
 PACKAGES="$WORK_DIR/Packages"
 
 curl -fL \
-    "$TERMUX_REPO/dists/$TERMUX_DIST/main/binary-$TERMUX_ARCH/Packages.xz" \
+    "$TERMUX_REPO/dists/stable/main/binary-$TERMUX_ARCH/Packages.xz" \
     -o "$PACKAGES_XZ"
-
+    
 xz -dc "$PACKAGES_XZ" > "$PACKAGES"
 
 [[ -s "$PACKAGES" ]] || die "Termux package metadata is empty."
