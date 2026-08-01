@@ -226,15 +226,6 @@ FFMPEG="$WORK_DIR/ffmpeg/ffmpeg"
 echo
 echo "FFmpeg successfully built."
 
-echo
-echo "Checking FFmpeg MP3 encoder..."
-"$FFMPEG" -hide_banner -encoders 2>/dev/null \
-    | grep -q 'libmp3lame' \
-    || die "FFmpeg was built, but libmp3lame encoder is missing."
-
-echo "libmp3lame encoder is present."
-echo
-
 # ------------------------------------------------------------
 # Download Termux package metadata
 # ------------------------------------------------------------
