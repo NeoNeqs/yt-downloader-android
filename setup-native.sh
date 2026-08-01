@@ -159,7 +159,7 @@ fi
 
 make -j"$(nproc)"
 
-LAME_PREFIX="$WORK_DIR/lame/install"
+LAME_PREFIX="$WORK_DIR/lame/install/usr/local"
 
 rm -rf "$LAME_PREFIX"
 mkdir -p "$LAME_PREFIX"
