@@ -197,6 +197,8 @@ PKG_CONFIG_PATH="$LAME_LIB/pkgconfig"
 
 export PKG_CONFIG_PATH
 
+ls -l "$LAME_PREFIX/lib/libmp3lame.a"
+
 ./configure \
     --target-os=android \
     --arch=aarch64 \
@@ -239,9 +241,13 @@ export PKG_CONFIG_PATH
     --enable-filter=anull \
     --enable-filter=atrim \
     --enable-filter=asetpts \
-    --enable-libmp3lame
+    --enable-libmp3lame \
+    --extra-cflags="-I$LAME_PREFIX/include" \
+    --extra-ldflags="-L$LAME_PREFIX/lib"
 
 make -j"$(nproc)"
+
+ffmpeg/ffmpeg -hide_banner -encoders | grep -i mp3
 
 FFMPEG="$WORK_DIR/ffmpeg/ffmpeg"
 
