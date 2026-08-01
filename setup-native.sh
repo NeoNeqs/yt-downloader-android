@@ -247,9 +247,10 @@ ls -l "$WORK_DIR/lame/install/usr/local/lib/libmp3lame.a"
 
 make -j"$(nproc)"
 
-"$BUILD_DIR/ffmpeg/ffmpeg" -hide_banner -encoders | grep -i mp3
 
 FFMPEG="$WORK_DIR/ffmpeg/ffmpeg"
+
+"$FFMPEG" -hide_banner -encoders | grep -i mp3
 
 [[ -f "$FFMPEG" ]] || die "FFmpeg binary was not produced."
 
