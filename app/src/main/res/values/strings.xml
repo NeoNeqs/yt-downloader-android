@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">YtMusicSaver</string>
+    <string name="share_target_label">Save audio</string>
+    <string name="instructions">Share a video link here from YouTube (or any app) to save it as audio into Music/YtMusicSaver.</string>
+    <string name="empty_state">No downloads yet</string>
+</resources>

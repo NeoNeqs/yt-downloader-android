@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.YtMusicSaver" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
+
+    <!-- ShareReceiverActivity uses this so it never actually shows a UI —
+         it just processes the share and finishes immediately. -->
+    <style name="Theme.Translucent.NoDisplay" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+</resources>
