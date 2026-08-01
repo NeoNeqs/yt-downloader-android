@@ -197,7 +197,7 @@ PKG_CONFIG_PATH="$LAME_LIB/pkgconfig"
 
 export PKG_CONFIG_PATH
 
-ls -l "$BUILD_DIR/lame/install/usr/local/lib/libmp3lame.a"
+ls -l "$WORK_DIR/lame/install/usr/local/lib/libmp3lame.a"
 
 ./configure \
     --target-os=android \
