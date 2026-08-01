@@ -182,6 +182,8 @@ echo
 
 echo "[4/9] Building FFmpeg with MP3/libmp3lame support..."
 
+cd "$WORK_DIR"
+
 if [[ ! -d ffmpeg ]]; then
     echo "Cloning FFmpeg..."
     git clone --depth 1 https://git.ffmpeg.org/ffmpeg.git
