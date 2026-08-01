@@ -147,16 +147,16 @@ fi
 
 LAME_PREFIX="$WORK_DIR/lame/install"
 
+
 ./configure \
     --host=aarch64-linux-android \
     --prefix="$LAME_PREFIX" \
-    --enable-static \
     --disable-shared \
+    --enable-static \
     --disable-frontend \
     --disable-decoder \
-    CC="$CC" \
-    AR="$AR" \
-    RANLIB="$RANLIB"
+    --disable-gtktest \
+    --disable-analyzer-hooks
 
 make -j"$(nproc)"
 make install
@@ -198,46 +198,23 @@ ls -l "$WORK_DIR/lame/install/lib/libmp3lame.a"
     --arch=aarch64 \
     --enable-cross-compile \
     --cross-prefix="$TOOLCHAIN/bin/aarch64-linux-android-" \
-    --cc="$CC" \
-    --cxx="$CXX" \
+    --cc="$TOOLCHAIN/bin/aarch64-linux-android24-clang" \
+    --cxx="$TOOLCHAIN/bin/aarch64-linux-android24-clang++" \
     --ar="$TOOLCHAIN/bin/llvm-ar" \
+    --nm="$TOOLCHAIN/bin/llvm-nm" \
     --ranlib="$TOOLCHAIN/bin/llvm-ranlib" \
     --strip="$TOOLCHAIN/bin/llvm-strip" \
     --sysroot="$TOOLCHAIN/sysroot" \
-    --extra-cflags="-I$LAME_INCLUDE" \
-    --extra-ldflags="-L$LAME_LIB" \
-    --extra-libs="-lm" \
+    --extra-cflags="-I$DEPS/include" \
+    --extra-ldflags="-L$DEPS/lib" \
     --disable-shared \
     --enable-static \
     --disable-doc \
     --disable-debug \
     --disable-ffplay \
     --disable-ffprobe \
-    --disable-network \
-    --disable-everything \
     --enable-ffmpeg \
-    --enable-protocol=file \
-    --enable-demuxer=mov \
-    --enable-demuxer=mp3 \
-    --enable-demuxer=matroska \
-    --enable-demuxer=ogg \
-    --enable-demuxer=flac \
-    --enable-muxer=mp3 \
-    --enable-muxer=mp4 \
-    --enable-muxer=adts \
-    --enable-decoder=aac \
-    --enable-decoder=mp3 \
-    --enable-decoder=flac \
-    --enable-decoder=opus \
-    --enable-decoder=vorbis \
-    --enable-encoder=libmp3lame \
-    --enable-filter=aresample \
-    --enable-filter=anull \
-    --enable-filter=atrim \
-    --enable-filter=asetpts \
-    --enable-libmp3lame \
-    --extra-cflags="-I$LAME_PREFIX/include" \
-    --extra-ldflags="-L$LAME_PREFIX/lib"
+    --enable-libmp3lame
 
 make -j"$(nproc)"
 
